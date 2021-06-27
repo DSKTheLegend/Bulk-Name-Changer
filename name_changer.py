@@ -2,7 +2,7 @@ import os
 
 want_to_continue = False
 is_name_string_created = False
-
+delimiter_defined = False
 dir_list = os.listdir('.')
 for file in dir_list : 
     i = 0
@@ -10,7 +10,11 @@ for file in dir_list :
     ok = ''
     if file != 'name_changer.py':
         org_name = file
-        file = file.split(" ")
+        if delimiter_defined == False:
+            print(file)
+            delimiter = raw_input("Specify delimiter : ")
+            delimiter_defined = True
+        file = file.split(delimiter)
         index = 0
         if is_name_string_created == False:
             for words in file:
